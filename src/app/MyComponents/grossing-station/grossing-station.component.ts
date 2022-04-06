@@ -108,4 +108,7 @@ export class GrossingStationComponent implements OnInit {
 
 
   }
+  pendingSamples(){
+    this.router.navigateByUrl('/pendingSamples');
+  }
 }

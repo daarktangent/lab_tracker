@@ -134,7 +134,7 @@ export class ReceivingStationComponent implements OnInit {
   ngOnInit(): void {
   }
   requests(){
-    
+    this.router.navigateByUrl('/requests');
   }
   sample(){
 
