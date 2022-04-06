@@ -27,6 +27,7 @@ export class GrossingStationComponent implements OnInit {
   quantity;
   str;
   message;
+  sample1:sampleDetails=new sampleDetails();
   alpha=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
   constructor(
     private router:Router,
@@ -105,6 +106,15 @@ export class GrossingStationComponent implements OnInit {
       console.log(this.message);
       this.sampleForm=false;
     //}
+
+    this.sample.lastUpdatedStation=3;
+    console.log("Hello");
+    console.log(this.sample);
+    let resp1=this.grossingService.setLastUpdated(this.sample);
+      resp1.subscribe((data)=>{
+        console.log(data);
+        this.message=data})
+   // this.grossingService.setLastUpdated(this.sample);
 
 
   }

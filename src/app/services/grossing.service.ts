@@ -25,4 +25,7 @@ export class GrossingService {
   insertBlockDetails(blockDetails){
     return this.httpClient.post(this.serverUrl+'block/insertAllBlocks',blockDetails);
   }
+  setLastUpdated(sample){
+    return this.httpClient.put(this.serverUrl+'setLastUpdated',sample)
+  }
 }
