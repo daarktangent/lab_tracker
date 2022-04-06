@@ -1,0 +1,73 @@
+<div>
+    <head></head>
+    <body class="mat-typography">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Reporting Station</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div  id="navbarSupportedContent">
+              <form class="d-flex">
+                <button class="btn btn-outline-success" style="margin-right:20px" type="submit" (click)="requests()">Request from HIS</button>
+                <button class="btn btn-outline-success" style="margin-right:20px" type="submit" (click)="sample()">Sample</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+        <div fxLayoutAlign="center center" fxFlexFill class="main-div" padding:53px>
+            <mat-card fxFlex="30">
+                
+                <form (ngSubmit)="onSubmit()" fxLayoutAlign="stretch" fxLayout = "column" class="login-form">
+                    <div>
+                        <mat-form-field>
+                            <input matInput type="text"  placeholder="Enter Patient ID" name="patientID" [(ngModel)]="patientID">
+                        </mat-form-field> 
+                        <button mat-raised-button style="margin-left:20px" type="submit">Submit</button>
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+        
+        <div style="margin-left: 40px;">
+            <h2>Details</h2>
+            <div fxLayoutAlign="center center" fxFlexFill class="main-div">
+                <mat-card fxFlex="60" columns>
+                    <form fxLayoutAlign="stretch" fxLayout = "column" class="login-form">
+                        <div>
+                            <h4>PatientID</h4>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+            <div>
+                <h2>Report</h2>
+                <div fxLayoutAlign="center center" fxFlexFill class="main-div">
+                    <mat-card fxFlex="100" columns>
+                        <form fxLayoutAlign="stretch" fxLayout = "column" class="login-form">
+                            <div>
+                                <div style="float: left;margin-right: 5%;"><h3>Observations</h3></div>
+                                <div style="float: left;"><textarea id="obs"></textarea></div>
+                            </div>
+                            <div>
+                                <div style="float: left;margin-right: 5%;"><h3>Reported by</h3></div>
+                                <div style="float: left;">
+                                    <textarea id="reportedBy"></textarea>
+                                </div>
+                            </div>
+                            <div  id="navbarSupportedContent">
+                                <form class="d-flex">
+                                  <button class="btn btn-outline-success" style="margin-right:20px" type="submit" >SAVE</button>
+                                  <button class="btn btn-outline-success" style="margin-right:20px" type="submit" >View Uploaded file</button>
+                                </form>
+                              </div>
+                        </form>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+  
+   
+  </body>
+  </div>

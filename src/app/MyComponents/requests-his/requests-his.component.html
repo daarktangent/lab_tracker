@@ -1,0 +1,49 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">Requests from HIS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addEmployee"
+                  type="submit">Add Employee</button>
+          </div> -->
+      </div>
+      <div>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="getAllRequests()">Show
+              All</button>
+      </div>
+  </nav>
+  
+
+<table class="table table-hover">
+  <thead>
+      <tr>
+          <th scope="col">Patient ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Sex</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let patient of pD_list ">
+          <td>{{patient.patient_id}}</td>
+          <td>{{patient.name}}</td>
+          <td>{{patient.age}}</td>
+          <td>{{patient.sex}}</td>
+
+          <td>
+              <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal"
+                  data-bs-target="#editEmployee" (click)="addRequest(patient)">Add</button>
+              <button type="button" class="btn btn-outline-danger" (click)="deleteRequest(patient)">Delete</button>
+          </td>
+
+      </tr>
+
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,17 @@
+<div>
+    <h1>Lab Tracker</h1>
+</div>
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+    <mat-card fxFlex="25">
+        <mat-toolbar color="primary">Login Page</mat-toolbar>
+        <form (ngSubmit)="onSubmit()" fxLayoutAlign="stretch" fxLayout = "column" class="login-form">
+            <mat-form-field>
+                <input matInput type="text" placeholder="User ID" name="userID" [(ngModel)]="userID">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="password">
+            </mat-form-field>
+            <button mat-raised-button type="submit">Login</button>
+        </form>
+    </mat-card>
+</div>
