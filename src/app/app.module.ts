@@ -37,7 +37,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { AdminComponent } from './MyComponents/admin/admin.component';
 import { SearchfilterPipe } from './searchfilter.pipe';
 
-import {ReactiveFormsModule} from '@angular/forms'
+import {ReactiveFormsModule} from '@angular/forms';
+import { GrossingStationComponent } from './MyComponents/grossing-station/grossing-station.component';
+import { PendingSamplesComponent } from './MyComponents/pending-samples/pending-samples.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,8 @@ import {ReactiveFormsModule} from '@angular/forms'
     ConfirmDialogComponent,
     AdminComponent,
     SearchfilterPipe,
+    GrossingStationComponent,
+    PendingSamplesComponent,
     //AdminComponent
 
   ],

@@ -1,0 +1,52 @@
+<div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pending Samples</a>
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addEmployee"
+                    type="submit">Add Employee</button>
+            </div> -->
+        </div>
+        <!-- <div>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="getAllPendingSamples()">Show
+                All</button>
+        </div> -->
+    </nav>
+    
+  
+  <table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Sample ID</th>
+            <th scope="col">Remarks</th>
+            <th scope="col">Specimen</th>
+            <th scope="col">Test</th>
+            <th scope="col">Fixative</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sample of pndng_samples ">
+            <td>{{sample.sample_id}}</td>
+            <td>{{sample.remarks}}</td>
+            <td>{{sample.specimen}}</td>
+            <td>{{sample.test}}</td>
+            <td>{{sample.fixative}}</td>
+  
+            <!-- <td>
+                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal"
+                    data-bs-target="#editEmployee" (click)="addRequest(patient)">Add</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteRequest(patient)">Delete</button>
+            </td> -->
+  
+        </tr>
+  
+    </tbody>
+  </table>
+  </div>
+  
