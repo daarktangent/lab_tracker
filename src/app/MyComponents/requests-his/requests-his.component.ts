@@ -108,6 +108,7 @@ import { ReceivingService } from 'src/app/services/receiving.service';
   pD_list;
 
   constructor(private _liveAnnouncer: LiveAnnouncer,
+    private router :Router,
     private receivingService: ReceivingService) {}
 
   @ViewChild(MatSort) sort: MatSort;
@@ -156,6 +157,9 @@ import { ReceivingService } from 'src/app/services/receiving.service';
   }
   deleteRequest(patient){
 
+  }
+  recStation(){
+    this.router.navigateByUrl('/receivingStation');
   }
 
 }

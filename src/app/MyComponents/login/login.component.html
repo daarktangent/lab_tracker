@@ -6,12 +6,15 @@
         <mat-toolbar color="primary">Login Page</mat-toolbar>
         <form (ngSubmit)="onSubmit()" fxLayoutAlign="stretch" fxLayout = "column" class="login-form">
             <mat-form-field>
-                <input matInput type="text" placeholder="User ID" name="userID" [(ngModel)]="userID">
+                <input matInput type="text" placeholder="Email" name="Email" [(ngModel)]="form.email">
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="password">
+                <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="form.password">
             </mat-form-field>
-            <button mat-raised-button type="submit">Login</button>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Role" name="role" [(ngModel)]="form.role">
+            </mat-form-field>
+            <button mat-raised-button type="submit">Login </button>
         </form>
     </mat-card>
 </div>

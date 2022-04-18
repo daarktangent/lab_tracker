@@ -39,7 +39,8 @@ import { SearchfilterPipe } from './searchfilter.pipe';
 
 import {ReactiveFormsModule} from '@angular/forms';
 import { GrossingStationComponent } from './MyComponents/grossing-station/grossing-station.component';
-import { PendingSamplesComponent } from './MyComponents/pending-samples/pending-samples.component'
+import { PendingSamplesComponent } from './MyComponents/pending-samples/pending-samples.component';
+import { ExternalPatientComponent } from './MyComponents/external-patient/external-patient.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { PendingSamplesComponent } from './MyComponents/pending-samples/pending-
     SearchfilterPipe,
     GrossingStationComponent,
     PendingSamplesComponent,
+    ExternalPatientComponent,
     //AdminComponent
 
   ],

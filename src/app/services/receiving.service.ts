@@ -33,4 +33,7 @@ export class ReceivingService {
   getAcceptedRequests(){
     return this.httpClient.get(this.serverUrl+'getAcceptedRequests');
   }
+  insertPD_manual(patient){
+    return this.httpClient.post(this.serverUrl+'insert',patient);
+  }
 }

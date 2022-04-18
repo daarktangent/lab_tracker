@@ -8,15 +8,18 @@ import {AdminComponent} from './MyComponents/admin/admin.component'
 import {ConfirmDialogComponent} from './MyComponents/confirm-dialog/confirm-dialog.component';
 import { PendingSamplesComponent } from './MyComponents/pending-samples/pending-samples.component';
 import { GrossingStationComponent } from './MyComponents/grossing-station/grossing-station.component';
+import { ExternalPatientComponent } from './MyComponents/external-patient/external-patient.component';
 const routes: Routes = [
-  {path:'',component:LoginComponent},
+  //{path:'',component:LoginComponent},
   {path:'receivingStation',component:ReceivingStationComponent},
   {path:'requests',component:RequestsHISComponent},
   {path:'sample',component:SampleComponent},
   {path:'admin',component:AdminComponent},
   {path:'confirm',component:ConfirmDialogComponent},
   {path:'pendingSamples',component:PendingSamplesComponent},
-  {path:'grossingStation',component:GrossingStationComponent}
+  {path:'grossingStation',component:GrossingStationComponent},
+  {path:'external',component:ExternalPatientComponent},
+  {path:'login',component:LoginComponent}
 ];
 
 @NgModule({
