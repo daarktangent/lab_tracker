@@ -19,7 +19,7 @@ export class ReceivingStationComponent implements OnInit {
   uSampleId;
   uUHID;
   pdd;
- 
+  pdd2;
   name;
   newForm=true;
   sampleForm=true;
@@ -36,7 +36,8 @@ export class ReceivingStationComponent implements OnInit {
 
   constructor(private router: Router,
     private receivingService: ReceivingService) {
-        this.pdd=patientDetails;
+        this.pdd=new patientDetails("","",0,"",false);
+        this.pdd2=new patientDetails("","",0,"",false);
         this.receivingService.getAcceptedRequests().subscribe(data=>{
           this.patientVals=data;
           console.log(data);
@@ -75,7 +76,11 @@ export class ReceivingStationComponent implements OnInit {
     
   }
   savePDetails(){
-
+    let resp=this.receivingService.insertPD_manual(this.pdd2);
+    resp.subscribe((data)=>{
+      console.log(data);
+      this.message=data});
+    console.log(this.message);
   }
 
   saveSampleDetails(){
@@ -139,8 +144,11 @@ export class ReceivingStationComponent implements OnInit {
   sample(){
 
   }
+  manualEntry(){
+    this.router.navigateByUrl('/external')
+  }
 }
-function getSampleExist(sample_id: string) {
-  throw new Error('Function not implemented.');
-}
+// function getSampleExist(sample_id: string) {
+//   throw new Error('Function not implemented.');
+// }
 

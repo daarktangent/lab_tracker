@@ -41,6 +41,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { GrossingStationComponent } from './MyComponents/grossing-station/grossing-station.component';
 import { PendingSamplesComponent } from './MyComponents/pending-samples/pending-samples.component';
 import { ExternalPatientComponent } from './MyComponents/external-patient/external-patient.component'
+
+import {MatTabsModule} from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,8 +85,8 @@ import { ExternalPatientComponent } from './MyComponents/external-patient/extern
     MatPaginatorModule,
     MatSnackBarModule,
     MatSortModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    MatTabsModule
 
   ],
   providers: [],

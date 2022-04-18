@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
     this.empDetail = this.formBuilder.group({
       id:[''],
       name: [''],
+      password: [''],
       email: [''],
       phone: [''],
       role:['']
@@ -32,6 +33,7 @@ export class AdminComponent implements OnInit {
     this.empObj.email=this.empDetail.value.email;
     this.empObj.phone=this.empDetail.value.phone;
     this.empObj.role=this.empDetail.value.role;
+    this.empObj.password=this.empDetail.value.name;
     this.empService.addEmployee(this.empObj).subscribe(res=>{
       console.log(res);
       this.getAllEmployee();
@@ -52,6 +54,7 @@ editEmployee(emp : Employee) {
   this.empDetail.controls['email'].setValue(emp.email);
   this.empDetail.controls['phone'].setValue(emp.phone);
   this.empDetail.controls['role'].setValue(emp.role);
+  this.empDetail.controls['password'].setValue(emp.password);
 
 }
 updateEmployee() {
@@ -61,6 +64,7 @@ updateEmployee() {
   this.empObj.phone = this.empDetail.value.phone;
   this.empObj.email = this.empDetail.value.email;
   this.empObj.role = this.empDetail.value.role;
+  this.empObj.password=this.empDetail.value.password;
 
   this.empService.updateEmployee(this.empObj).subscribe(res=>{
     console.log(res);

@@ -15,3 +15,7 @@
 .active-csf-bg{
     background-color: mediumaquamarine;
 }
+.example-button-toggle-label {
+  display: inline-block;
+  margin: 16px;
+}

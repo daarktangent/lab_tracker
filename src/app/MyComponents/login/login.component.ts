@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     password:'',
     role :''
   }
-  form1;
+
   //form=new loginRequest();
   constructor(private router: Router,
     private loginService: LoginService) {
@@ -43,15 +43,18 @@ export class LoginComponent implements OnInit {
     //   this.router.navigateByUrl('/grossingStation');
     // }
     console.log(JSON.stringify(this.form));
-    this.form1=this.form;
-      console.log(this.form1);
-      let resp=this.loginService.employeeLogin(this.form1);
+      let resp=this.loginService.employeeLogin(this.form);
       resp.subscribe((data)=>{
-        console.log(data);
-        this.message=data});
-      console.log(this.message);
-      //this.router.navigateByUrl('/receivingStation')
+        this.message=data
+        console.log(this.message)
+        if(this.message!=null)
+          this.router.navigateByUrl('/receivingStation')
+        else
+          alert("Login Failed")
+      });
+
       
+     
   }
 
 }

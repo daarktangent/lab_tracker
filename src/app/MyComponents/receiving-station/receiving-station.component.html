@@ -1,228 +1,295 @@
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title>Reporting Station</mat-card-title>
+    <mat-card-title>Receiving Station</mat-card-title>
     
   </mat-card-header>
   <div  id="navbarSupportedContent">
     <form class="d-flex">
       <button class="btn btn-outline-success" style="margin-right:20px" type="submit" (click)="requests()">Requests from HIS</button>
     </form>
+    <div class="text-right">
+      <button class="btn btn-outline-success" slyle="margin-right:30px" type="submit" (click)="manualEntry()">External Sample</button>
+    </div>
   </div>
+
   <mat-divider></mat-divider>
   <br>
   <mat-card-content width="500%">
-    <form #Form="ngForm"  class="form">
-      <!--<div *ngIf="registrationType.value=== 'INTERNAL'||registrationType.value==='EXTERNAL'">hello</div>-->
-      <br>
-      <br>
-      <table class="single">
-        <tr>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-label>Sample ID</mat-label>
-              <mat-select #upperSampleId="ngModel"  name="upperSampleId" ngDefaultControl [(ngModel)]="uSampleId">
-                <mat-option *ngFor="let patient of patientVals"  [value]="patient.patient_id">{{patient.patient_id}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <!-- <p>{{uSampleId}}</p> -->
-            <!-- </td><td>
-            <div class="col-md-9">
-            <div class="single">
-              <select formControlName="val" placeholder="Sample ID">
-                  <option *ngFor="let val of patientVals" [ngValue]="val">
-                      {{ val.patient_id }}
-                  </option>
-              </select>
-            </div>
-          </div>
-          </td> -->
-        </tr>
-        <!-- <tr>
-          <td>
-            <mat-form-field appearance="outline" class="single">
-              <mat-label>Sample Id.</mat-label>
-              <input #upperSampleId="ngModel" [(ngModel)]="uSampleId" matInput (input)="uUHID=null" name="upperSampleId" placeholder="Enter Sample Id" type="text" >
-            </mat-form-field>
-          </td>
-        </tr> -->
-        <tr>
-          <td colspan="2" align="center">
-            <button  class="submit" color="primary" (click)="autofill(); hiddenForm.hidden=false" mat-raised-button>Go
-            </button>
-          </td>
-        </tr>
+
+  <mat-tab-group backgroundColor="primary" >
+    <mat-tab label="First"> 
+      <form #Form="ngForm"  class="form">
+        <!--<div *ngIf="registrationType.value=== 'INTERNAL'||registrationType.value==='EXTERNAL'">hello</div>-->
         <br>
-        <tr>
-          <td colspan="2" align="center">
-            <mat-error *ngIf="incorrectRegType">This is not an {{this.regType}} sample</mat-error>
-          </td>
-        </tr>
-      </table>
-
-
-      <br>
-      <mat-divider></mat-divider>
-      <br>
-
-
-      <div #hiddenForm class="viewForm" [hidden]="(newForm)">
+        <br>
         <table class="single">
           <tr>
-            <td colspan="2">
-              <mat-form-field appearance="outline"class="single">
-                <mat-label>Patient ID</mat-label>
-                <input #name="ngModel" [(ngModel)]="pdd.patient_id" [disabled]="isPddReadOnly"  matInput name="PatientID" placeholder="Enter id" required type="text">
-                <!-- <mat-error *ngIf="name.errors && (name.invalid || name.touched)">Enter name</mat-error> -->
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Sample ID</mat-label>
+                <mat-select #upperSampleId="ngModel"  name="upperSampleId" ngDefaultControl [(ngModel)]="uSampleId">
+                  <mat-option *ngFor="let patient of patientVals"  [value]="patient.patient_id">{{patient.patient_id}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
-            </td>
+              <!-- <p>{{uSampleId}}</p> -->
+              <!-- </td><td>
+              <div class="col-md-9">
+              <div class="single">
+                <select formControlName="val" placeholder="Sample ID">
+                    <option *ngFor="let val of patientVals" [ngValue]="val">
+                        {{ val.patient_id }}
+                    </option>
+                </select>
+              </div>
+            </div>
+            </td> -->
           </tr>
-          <tr>
-            <td colspan="2">
-              <mat-form-field appearance="outline"class="single">
-                <mat-label>Patient Name</mat-label>
-                <input #name="ngModel" [(ngModel)]="pdd.name" [disabled]="isPddReadOnly"  matInput name="PatientName" placeholder="Enter name" required type="text">
-                <!-- <mat-error *ngIf="name.errors && (name.invalid || name.touched)">Enter name</mat-error> -->
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
+          <!-- <tr>
             <td>
               <mat-form-field appearance="outline" class="single">
-                <mat-label>Age</mat-label>
-                <input #age="ngModel" [(ngModel)]="pdd.age" [disabled]="isPddReadOnly" [class.is-invalid]="age.invalid && age.touched" matInput name="age" pattern="[0-9]+" placeholder="Enter age" required type="number">
-                <mat-error *ngIf="age.errors && (age.invalid || age.touched)">Enter age</mat-error>
+                <mat-label>Sample Id.</mat-label>
+                <input #upperSampleId="ngModel" [(ngModel)]="uSampleId" matInput (input)="uUHID=null" name="upperSampleId" placeholder="Enter Sample Id" type="text" >
               </mat-form-field>
             </td>
-            <td>
-              <mat-form-field appearance="outline" class="single">
-                <mat-label>Sex</mat-label>
-                <input #sex="ngModel" [(ngModel)]="pdd.sex" [disabled]="isPddReadOnly"  matInput name="sex"  required type="text">
-                <!--<mat-error *ngIf="sex.errors && (sex.invalid || sex.touched)">Select sex</mat-error>-->
-              </mat-form-field>
+          </tr> -->
+          <tr>
+            <td colspan="2" align="center">
+              <button  class="submit" color="primary" (click)="autofill(); hiddenForm.hidden=false" mat-raised-button>Go
+              </button>
             </td>
           </tr>
+          <br>
           <tr>
-              <td colspan="2" align="center">
-                <button  class="submit" color="primary" (click)="savePDetails()" mat-raised-button>SAVE
-                </button>
-              </td>
-            </tr>
-          
+            <td colspan="2" align="center">
+              <mat-error *ngIf="incorrectRegType">This is not an {{this.regType}} sample</mat-error>
+            </td>
+          </tr>
         </table>
-
+  
+  
         <br>
         <mat-divider></mat-divider>
         <br>
-        </div>
-        
-        <div #hiddenForm  [hidden]="(newForm)">
-          <div><h3>ASSETS</h3></div>
+  
+  
+        <div #hiddenForm class="viewForm" [hidden]="(newForm)">
           <table class="single">
-          <tr>
-            <td>
-              <mat-form-field appearance="outline" class="single">
-                <mat-label>Sample ID</mat-label>
-                <input #npNumber="ngModel" [(ngModel)]="sd.sample_id" matInput name="sample_id" [disabled]="true" required type="text">
-              </mat-form-field>
-            </td> 
-            <td>
-              <mat-form-field appearance="outline" class="single">
-                <mat-label>Remarks</mat-label>
-                <input #npNumber="ngModel" [(ngModel)]="sd.remarks" matInput name="remarks"  required type="text">
-              </mat-form-field>
-            </td> 
-            <td>
-              <mat-form-field appearance="outline" class="single">
-                <mat-label>Specimen</mat-label>
-                <input #npNumber="ngModel" [(ngModel)]="sd.specimen" matInput name="specimen"  required type="text">
-              </mat-form-field>
-            </td> 
-            <td>
-              <mat-form-field appearance="outline" class="single">
-                <mat-label>Test</mat-label>
-                <input #npNumber="ngModel" [(ngModel)]="sd.test" matInput name="test"  required type="text">
-              </mat-form-field>
-            </td> 
-            <td>
-              <mat-form-field appearance="outline" class="single">
-                <mat-label>Fixative</mat-label>
-                <input #npNumber="ngModel" [(ngModel)]="sd.fixative" matInput name="fixative"  required type="text">
-              </mat-form-field>
-            </td> 
-            <td>
-              <mat-form-field appearance="outline" class="single">
-                <mat-label>Quantity</mat-label>
-                <input #npNumber="ngModel" [(ngModel)]="sd.quantity" matInput name="quantity"  required type="text">
-              </mat-form-field>
-            </td> 
-            <td align="center">
-              <button  class="submit" type="submit" (click)="saveSampleDetails()" color="primary" mat-raised-button>SAVE</button>
-            </td>
-          </tr>
-        </table>
-        </div>
-
-        <div #hiddenForm  [hidden]="(sampleForm)">
-          <div><h3>SAMPLES</h3></div>
+            <tr>
+              <td colspan="2">
+                <mat-form-field appearance="outline"class="single">
+                  <mat-label>Patient ID</mat-label>
+                  <input #name="ngModel" [(ngModel)]="pdd.patient_id" [disabled]="isPddReadOnly"  matInput name="PatientID" placeholder="Enter id" required type="text">
+                  <!-- <mat-error *ngIf="name.errors && (name.invalid || name.touched)">Enter name</mat-error> -->
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <mat-form-field appearance="outline"class="single">
+                  <mat-label>Patient Name</mat-label>
+                  <input #name="ngModel" [(ngModel)]="pdd.name" [disabled]="isPddReadOnly"  matInput name="PatientName" placeholder="Enter name" required type="text">
+                  <!-- <mat-error *ngIf="name.errors && (name.invalid || name.touched)">Enter name</mat-error> -->
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Age</mat-label>
+                  <input #age="ngModel" [(ngModel)]="pdd.age" [disabled]="isPddReadOnly" [class.is-invalid]="age.invalid && age.touched" matInput name="age" pattern="[0-9]+" placeholder="Enter age" required type="number">
+                  <mat-error *ngIf="age.errors && (age.invalid || age.touched)">Enter age</mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Sex</mat-label>
+                  <input #sex="ngModel" [(ngModel)]="pdd.sex" [disabled]="isPddReadOnly"  matInput name="sex"  required type="text">
+                  <!--<mat-error *ngIf="sex.errors && (sex.invalid || sex.touched)">Select sex</mat-error>-->
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                  <button  class="submit" color="primary" (click)="savePDetails()" mat-raised-button>SAVE
+                  </button>
+                </td>
+              </tr>
+            
+          </table>
+  
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+          </div>
           
-          <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Sample ID</th>
-                    <th>Sample remarks</th>
-                    <th>Specimen</th>
-                    <th>Test</th>
-                    <th>fixative</th>
-                    <th>Quantity</th>
+          <div #hiddenForm  [hidden]="(newForm)">
+            <div><h3>ASSETS</h3></div>
+            <table class="single">
+            <tr>
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Sample ID</mat-label>
+                  <input #npNumber="ngModel" [(ngModel)]="sd.sample_id" matInput name="sample_id" [disabled]="true" required type="text">
+                </mat-form-field>
+              </td> 
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Remarks</mat-label>
+                  <input #npNumber="ngModel" [(ngModel)]="sd.remarks" matInput name="remarks"  required type="text">
+                </mat-form-field>
+              </td> 
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Specimen</mat-label>
+                  <input #npNumber="ngModel" [(ngModel)]="sd.specimen" matInput name="specimen"  required type="text">
+                </mat-form-field>
+              </td> 
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Test</mat-label>
+                  <input #npNumber="ngModel" [(ngModel)]="sd.test" matInput name="test"  required type="text">
+                </mat-form-field>
+              </td> 
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Fixative</mat-label>
+                  <input #npNumber="ngModel" [(ngModel)]="sd.fixative" matInput name="fixative"  required type="text">
+                </mat-form-field>
+              </td> 
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Quantity</mat-label>
+                  <input #npNumber="ngModel" [(ngModel)]="sd.quantity" matInput name="quantity"  required type="text">
+                </mat-form-field>
+              </td> 
+              <td align="center">
+                <button  class="submit" type="submit" (click)="saveSampleDetails()" color="primary" mat-raised-button>SAVE</button>
+              </td>
+            </tr>
+          </table>
+          </div>
+  
+          <div #hiddenForm  [hidden]="(sampleForm)">
+            <div><h3>SAMPLES</h3></div>
+            
+            <table class="table table-striped table-bordered">
+              <thead>
+                  <tr>
+                      <th>Sample ID</th>
+                      <th>Sample remarks</th>
+                      <th>Specimen</th>
+                      <th>Test</th>
+                      <th>fixative</th>
+                      <th>Quantity</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let sample of sA">
+                      <td>
+                        <mat-form-field appearance="outline" class="single">
+                          <mat-label>Sample ID</mat-label>
+                          <input #npNumber="ngModel" [(ngModel)]="sample.sample_id" matInput name="{{sample.sample_id}}"  required type="text">
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field appearance="outline" class="single">
+                          <mat-label>Remarks</mat-label>
+                          <input #npNumber="ngModel" [(ngModel)]="sample.remarks" matInput name="{{sample.remarks}}"  required type="text">
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field appearance="outline" class="single">
+                          <mat-label>Specimen</mat-label>
+                          <input #npNumber="ngModel" [(ngModel)]="sample.specimen" matInput name="{{sample.specimen}}"  required type="text">
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field appearance="outline" class="single">
+                          <mat-label>Test</mat-label>
+                          <input #npNumber="ngModel" [(ngModel)]="sample.test" matInput name="{{sample.test}}"  required type="text">
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field appearance="outline" class="single">
+                          <mat-label>Fixative</mat-label>
+                          <input #npNumber="ngModel" [(ngModel)]="sample.fixative" matInput name="{{sample.fixative}}"  required type="text">
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field appearance="outline" class="single">
+                          <mat-label>Quantity</mat-label>
+                          <input #npNumber="ngModel" [(ngModel)]="sample.quantity" matInput name="{{sample.quantity}}"  required type="text">
+                        </mat-form-field>
+                      </td>
+                     
+                      
+                  </tr>
+              </tbody>
+          </table>
+          
+          </div>
+      </form>  
+    </mat-tab>
+    <mat-tab label="Second"> 
+      <form #Form="ngForm"  class="form">
+
+        <div #hiddenForm class="viewForm">
+            <table class="single">
+            <tr>
+                <td colspan="2">
+                <mat-form-field appearance="outline"class="single">
+                    <mat-label>Patient ID</mat-label>
+                    <input #name="ngModel" [(ngModel)]="pdd2.patient_id"  matInput name="PatientID" placeholder="Enter id" required type="text">
+                    <!-- <mat-error *ngIf="name.errors && (name.invalid || name.touched)">Enter name</mat-error> -->
+                </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                <mat-form-field appearance="outline"class="single">
+                    <mat-label>Patient Name</mat-label>
+                    <input #name="ngModel" [(ngModel)]="pdd2.name"   matInput name="PatientName" placeholder="Enter name" required type="text">
+                    <!-- <mat-error *ngIf="name.errors && (name.invalid || name.touched)">Enter name</mat-error> -->
+                </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <mat-form-field appearance="outline" class="single">
+                    <mat-label>Age</mat-label>
+                    <input #age="ngModel" [(ngModel)]="pdd2.age" [class.is-invalid]="age.invalid && age.touched" matInput name="age" pattern="[0-9]+" placeholder="Enter age" required type="number">
+                    <mat-error *ngIf="age.errors && (age.invalid || age.touched)">Enter age</mat-error>
+                </mat-form-field>
+                </td>
+                <td>
+                <mat-form-field appearance="outline" class="single">
+                    <mat-label>Sex</mat-label>
+                    <input #sex="ngModel" [(ngModel)]="pdd2.sex"   matInput name="sex"  required type="text">
+                    <!--<mat-error *ngIf="sex.errors && (sex.invalid || sex.touched)">Select sex</mat-error>-->
+                </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button  class="submit" color="primary" (click)="savePDetails()" mat-raised-button>SAVE
+                    </button>
+                </td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let sample of sA">
-                    <td>
-                      <mat-form-field appearance="outline" class="single">
-                        <mat-label>Sample ID</mat-label>
-                        <input #npNumber="ngModel" [(ngModel)]="sample.sample_id" matInput name="{{sample.sample_id}}"  required type="text">
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field appearance="outline" class="single">
-                        <mat-label>Remarks</mat-label>
-                        <input #npNumber="ngModel" [(ngModel)]="sample.remarks" matInput name="{{sample.remarks}}"  required type="text">
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field appearance="outline" class="single">
-                        <mat-label>Specimen</mat-label>
-                        <input #npNumber="ngModel" [(ngModel)]="sample.specimen" matInput name="{{sample.specimen}}"  required type="text">
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field appearance="outline" class="single">
-                        <mat-label>Test</mat-label>
-                        <input #npNumber="ngModel" [(ngModel)]="sample.test" matInput name="{{sample.test}}"  required type="text">
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field appearance="outline" class="single">
-                        <mat-label>Fixative</mat-label>
-                        <input #npNumber="ngModel" [(ngModel)]="sample.fixative" matInput name="{{sample.fixative}}"  required type="text">
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field appearance="outline" class="single">
-                        <mat-label>Quantity</mat-label>
-                        <input #npNumber="ngModel" [(ngModel)]="sample.quantity" matInput name="{{sample.quantity}}"  required type="text">
-                      </mat-form-field>
-                    </td>
-                   
-                    
-                </tr>
-            </tbody>
-        </table>
-        
+            
+            </table>
+
+            <br>
+            <mat-divider></mat-divider>
+            <br>
         </div>
-    </form>
+    </form>  
+    </mat-tab>
+    
+  </mat-tab-group>
+
+ 
+    
     <!-- <td>
       <input [(ngModel)]="sample.sample_id class="form-control" type="text" name="{{sample.sample_id}" />
   </td>
