@@ -1,0 +1,35 @@
+<div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pending Patients</a>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="verificationStation()">Verification Station</button>
+        </div>
+    </nav>
+    
+  
+  <table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Patient ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Sex</th>
+            <th scope="col">Report</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let patient of pndng_patients ">
+            <td>{{patient.patient_id}}</td>
+            <td>{{patient.name}}</td>
+            <td>{{patient.age}}</td>
+            <td>{{patient.sex}}</td>
+            <td>{{patient.report}}</td>
+        </tr>
+  
+    </tbody>
+  </table>
+  </div>
+  

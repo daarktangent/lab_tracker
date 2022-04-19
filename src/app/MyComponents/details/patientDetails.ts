@@ -5,6 +5,8 @@ export class patientDetails{
     public name:string,
     public age: number,
     public sex: string,
+    public report:string,
     public accept:boolean,
+    
     ){}
 }

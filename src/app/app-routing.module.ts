@@ -9,6 +9,10 @@ import {ConfirmDialogComponent} from './MyComponents/confirm-dialog/confirm-dial
 import { PendingSamplesComponent } from './MyComponents/pending-samples/pending-samples.component';
 import { GrossingStationComponent } from './MyComponents/grossing-station/grossing-station.component';
 import { ExternalPatientComponent } from './MyComponents/external-patient/external-patient.component';
+import { VerificationComponent } from './MyComponents/verification/verification.component';
+import { DispatchComponent } from './MyComponents/dispatch/dispatch.component';
+import { PendingPatientsComponent } from './MyComponents/pending-patients/pending-patients.component';
+import { PendingPatientsDispatchComponent } from './MyComponents/pending-patients-dispatch/pending-patients-dispatch.component';
 const routes: Routes = [
   //{path:'',component:LoginComponent},
   {path:'receivingStation',component:ReceivingStationComponent},
@@ -19,7 +23,11 @@ const routes: Routes = [
   {path:'pendingSamples',component:PendingSamplesComponent},
   {path:'grossingStation',component:GrossingStationComponent},
   {path:'external',component:ExternalPatientComponent},
-  {path:'login',component:LoginComponent}
+  {path:'login',component:LoginComponent},
+  {path:'verification',component:VerificationComponent},
+  {path:"dispatch",component:DispatchComponent},
+  {path:"pendingPatients",component:PendingPatientsComponent},
+  {path:"pendingDispatchPatients",component:PendingPatientsDispatchComponent}
 ];
 
 @NgModule({

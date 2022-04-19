@@ -36,8 +36,8 @@ export class ReceivingStationComponent implements OnInit {
 
   constructor(private router: Router,
     private receivingService: ReceivingService) {
-        this.pdd=new patientDetails("","",0,"",false);
-        this.pdd2=new patientDetails("","",0,"",false);
+        this.pdd=new patientDetails("","",0,"","",false);
+        this.pdd2=new patientDetails("","",0,"","",false);
         this.receivingService.getAcceptedRequests().subscribe(data=>{
           this.patientVals=data;
           console.log(data);

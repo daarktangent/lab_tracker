@@ -90,6 +90,7 @@ export class GrossingStationComponent implements OnInit {
       this.blk.block_id=this.str;
       this.blk.remarks=this.obsrvtns;
       this.blk.sd=this.sample;
+      this.blk.last_updated_station=3;
       this.blkDetails.push(this.blk);
       
     }

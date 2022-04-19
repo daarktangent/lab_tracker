@@ -43,6 +43,10 @@ import { PendingSamplesComponent } from './MyComponents/pending-samples/pending-
 import { ExternalPatientComponent } from './MyComponents/external-patient/external-patient.component'
 
 import {MatTabsModule} from '@angular/material/tabs';
+import { VerificationComponent } from './MyComponents/verification/verification.component';
+import { DispatchComponent } from './MyComponents/dispatch/dispatch.component';
+import { PendingPatientsComponent } from './MyComponents/pending-patients/pending-patients.component';
+import { PendingPatientsDispatchComponent } from './MyComponents/pending-patients-dispatch/pending-patients-dispatch.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +60,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     GrossingStationComponent,
     PendingSamplesComponent,
     ExternalPatientComponent,
+    VerificationComponent,
+    DispatchComponent,
+    PendingPatientsComponent,
+    PendingPatientsDispatchComponent,
     //AdminComponent
 
   ],

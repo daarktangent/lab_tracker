@@ -12,7 +12,7 @@ export class ExternalPatientComponent implements OnInit {
   pdd;
   constructor(private router: Router,
     private receivingService: ReceivingService) {
-      this.pdd=new patientDetails("", "",0, "", false);
+      this.pdd=new patientDetails("", "",0, "","", false);
      }
 
   ngOnInit(): void {

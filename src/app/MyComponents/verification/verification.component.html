@@ -1,0 +1,111 @@
+<mat-card class="example-card">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">Verification Station</a>
+      </div>
+      <div>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="pendingPatients()">Pending Patients</button>
+      </div>
+  </nav>
+    
+    <mat-divider></mat-divider>
+    <br>
+    <mat-card-content width="500%">
+      <form #Form="ngForm"  class="form">
+        <table class="single">
+          <tr>
+            <td>
+                <mat-form-field appearance="outline"class="single">
+                    <mat-label>Patient ID</mat-label>
+                    <input  #patientid="ngModel" [(ngModel)]="patientId" matInput name="Patient ID" placeholder="Enter Patient Id" type="text" >
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <button  class="submit" (click)="autofill(); hiddenForm.hidden=false" color="primary"  mat-raised-button>Go
+              </button>
+            </td>
+          </tr>
+          
+        </table>
+  
+  
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+  
+  
+        <div #hiddenForm class="viewForm" [hidden]="(newForm)">
+          <table class="single">
+            <tr>
+              <td colspan="2">
+                <mat-form-field appearance="outline"class="single">
+                  <mat-label>Patient ID</mat-label>
+                  <input   #name="ngModel" [(ngModel)]="pdd.patient_id" [disabled]="isPddReadOnly"  matInput name="PatientID" placeholder="Enter id" required type="text">
+              
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <mat-form-field appearance="outline"class="single">
+                  <mat-label>Patient Name</mat-label>
+                  <input  #name="ngModel" [(ngModel)]="pdd.name" [disabled]="isPddReadOnly"  matInput name="PatientName"  required type="text">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Age</mat-label>
+                  <input matInput name="age" [(ngModel)]="pdd.age" [disabled]="isPddReadOnly" matInput name="Age"  required type="number">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Sex</mat-label>
+                  <input  #sex="ngModel" [(ngModel)]="pdd.sex" [disabled]="isPddReadOnly"  matInput name="sex"  required type="text">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Sample Report</mat-label>
+                  <input  #bReport="ngModel" [(ngModel)]="sampleReport" [disabled]="isPddReadOnly"  matInput name="bReport" placeholder="Section Report" required type="text">
+                </mat-form-field>
+              </td>
+          </tr>
+            <tr>
+                <td colspan="2">
+                  <mat-form-field appearance="outline" class="single">
+                    <mat-label>Block Report</mat-label>
+                    <input #sReport="ngModel" [(ngModel)]="blkReport" [disabled]="isPddReadOnly" matInput name="sReport" placeholder="Block Report" required type="text">
+                  </mat-form-field>
+                </td>
+            </tr>
+                     
+            
+          </table>
+        </div>
+        <div #hiddenForm  [hidden]="(newForm)">
+            <div><h3>Final Report</h3></div>
+            <table class="single">
+            <tr>
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                  <mat-label>Observations</mat-label>
+                  <input #npNumber="ngModel" [(ngModel)]="obsrvtns" matInput name="obsrvtns"  required type="text" matInput name="observtns"  required type="text">
+                </mat-form-field>
+              </td> 
+               
+              <td align="center">
+                <button  class="submit" type="submit" (click)="saveObs()" color="primary" mat-raised-button>SAVE</button>
+              </td>
+            </tr>
+          </table>
+          </div>
+        </form>
+        </mat-card-content>
+  </mat-card>
