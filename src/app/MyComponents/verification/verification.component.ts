@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { VerificationService } from 'src/app/services/verification.service';
 import { patientDetails } from '../details/patientDetails';
 import { blockDetails } from '../details/blockDetails';
+import {MatDialog, MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogActions } from '@angular/material/dialog';
+import { sampleDetails } from '../details/sampleDetails';
+
+export interface DialogData {
+  title:string;
+  content:string;
+}
 
 @Component({
   selector: 'app-verification',
@@ -15,7 +23,7 @@ export class VerificationComponent implements OnInit {
   sampleReport="";
   uSampleId;
   uUHID;
-  pdd;
+ // pdd;
   newForm=true;
   isPddReadOnly="true";
   sampleForm=true;
@@ -25,11 +33,22 @@ export class VerificationComponent implements OnInit {
   blkDetails;
   sampleDetails;
   message;
+  messageReport;
+  sampleID;
+  sD:sampleDetails=new sampleDetails();
+  dialogMsg={
+    "title":"",
+    "content":"",
+
+  }
   constructor(
     private router:Router,
     private verificationService: VerificationService,
+    public dialog: MatDialog
   ) { 
-      this.pdd=new patientDetails("","",0,"","",false);
+      //this.pdd=new patientDetails("","","",0,"","",false);
+
+      
   }
 
   ngOnInit(): void {
@@ -37,12 +56,12 @@ export class VerificationComponent implements OnInit {
   autofill(){
     this.sampleForm=true;
     this.newForm=false;
-    console.log(this.pdd);
+  //  console.log(this.pdd);
 
-    this.verificationService.getPatientByID(this.patientId).subscribe(
+    this.verificationService.getSampleByID(this.sampleID).subscribe(
       (data)=>{
         console.log(data);
-        this.pdd=data;
+        this.sD=data;
       },
       ()=>{
 
@@ -64,7 +83,7 @@ export class VerificationComponent implements OnInit {
     //   }
     // )
     this.generateBlkReport();
-    this.generateSampleReport();
+    //this.generateSampleReport();
     this.verificationService.getOneSample(this.uSampleId).subscribe(
       (data)=>{
         console.log(data);
@@ -72,22 +91,24 @@ export class VerificationComponent implements OnInit {
       }
     )
   }
+
+
   saveObs(){
     console.log(this.obsrvtns);
-    this.pdd.report=this.obsrvtns;
-   
-    let resp=this.verificationService.insertReport(this.pdd);
+    this.sD.remarks=this.obsrvtns;
+    this.sD.lastUpdatedStation=4;
+    let resp=this.verificationService.insertRemarksSample(this.sD);
       resp.subscribe((data)=>{
         console.log(data);
-        this.message=data});
+        this.messageReport=data});
 
-    for(let i=0;i<this.sampleDetails.length;i++){
-      this.sampleDetails[i].lastUpdatedStation=4;
-      let resp=this.verificationService.updateSample(this.sampleDetails[i]);
-      resp.subscribe((data)=>{
-        console.log(data);
-        this.message=data});
-    }
+    // for(let i=0;i<this.sampleDetails.length;i++){
+    //   this.sampleDetails[i].lastUpdatedStation=4;
+    //   let resp=this.verificationService.updateSample(this.sampleDetails[i]);
+    //   resp.subscribe((data)=>{
+    //     console.log(data);
+    //     this.message=data});
+    // }
 
     for(let i=0;i<this.blkDetails.length;i++){
       this.blkDetails[i].last_updated_station=4;
@@ -97,12 +118,17 @@ export class VerificationComponent implements OnInit {
         this.message=data});
 
     }
+    if(resp)
+      this.openDialog(true);
+    else
+      this.openDialog(false);
+
       
   }
 
   generateBlkReport(){
     //blkReport 
-    this.verificationService.getBlkDetailsOfPatient(this.patientId).subscribe(
+    this.verificationService.getBlkDetailsOfSample(this.sampleID).subscribe(
       (data)=>{
         console.log(data);
         this.blkDetails=data;
@@ -134,5 +160,52 @@ export class VerificationComponent implements OnInit {
 
   pendingPatients(){
     this.router.navigateByUrl('/pendingPatients')
+  }
+
+  openDialog(response) {
+   
+    if(response)
+    {
+      this.dialog.open(DialogElementsExampleDialog);
+    }
+    else{
+      const dialogRef = this.dialog.open(DialogUnsuccess, {
+        width: '300px',
+        data: {}
+      });
+    }
+    
+  }
+  
+  logout(){
+    this.router.navigateByUrl('/login')
+  }
+}
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: 'dialog-elements-example-dialog.html',
+})
+export class DialogElementsExampleDialog { 
+  constructor(
+    public dialogRef: MatDialogRef<DialogElementsExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ){}
+  close(){
+    this.dialogRef.close();
+  }
+  
+}
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: 'dialog-unsuccess.html',
+})
+export class DialogUnsuccess { 
+  constructor(
+    public dialogRef: MatDialogRef<DialogUnsuccess>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ){}
+  close(){
+    this.dialogRef.close();
   }
 }

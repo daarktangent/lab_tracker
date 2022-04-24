@@ -75,10 +75,10 @@ export class GrossingStationComponent implements OnInit {
   }
 
 
-  saveObs(){
-    console.log(this.obsrvtns);
+  // saveObs(){
+  //   console.log(this.obsrvtns);
     
-  }
+  // }
 
   saveBlockDetails(){
     console.log(this.quantity)
@@ -121,5 +121,8 @@ export class GrossingStationComponent implements OnInit {
   }
   pendingSamples(){
     this.router.navigateByUrl('/pendingSamples');
+  }
+  logout(){
+    this.router.navigateByUrl('/login')
   }
 }

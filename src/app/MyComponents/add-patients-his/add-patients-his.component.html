@@ -1,0 +1,80 @@
+<mat-card class="example-card">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">HIS</a>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="logout()">LOGOUT</button>
+      </div>
+    </nav>
+        
+    <mat-card-content>
+       
+            <form #Form="ngForm"  class="form">
+      
+              <div class="viewForm">
+                  <table class="single">
+                  <tr>
+                      <td>
+                      <mat-form-field appearance="outline"class="single">
+                          <mat-label>Patient ID</mat-label>
+                          <input #name="ngModel" [(ngModel)]="pdd.patient_id"  matInput name="PatientID" placeholder="Enter id" required type="text">
+                          <!-- <mat-error *ngIf="name.errors && (name.invalid || name.touched)">Enter name</mat-error> -->
+                      </mat-form-field>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                      <mat-form-field appearance="outline"class="single">
+                          <mat-label>Patient Name</mat-label>
+                          <input #name="ngModel" [(ngModel)]="pdd.name"   matInput name="PatientName" placeholder="Enter name" required type="text">
+                          <!-- <mat-error *ngIf="name.errors && (name.invalid || name.touched)">Enter name</mat-error> -->
+                      </mat-form-field>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                    <mat-form-field appearance="outline"class="single">
+                        <mat-label>Email</mat-label>
+                        <input #email="ngModel" matInput type="text" placeholder="Eg: abc@gmail.com" name="Email" [(ngModel)]="pdd.email">
+                    </mat-form-field>
+        
+                    </td>
+                </tr>
+                  <tr>
+                      <td>
+                      <mat-form-field appearance="outline" class="single">
+                          <mat-label>Age</mat-label>
+                          <input #age="ngModel" [(ngModel)]="pdd.age" [class.is-invalid]="age.invalid && age.touched" matInput name="age" pattern="[0-9]+" placeholder="Enter age" required type="number">
+                          <mat-error *ngIf="age.errors && (age.invalid || age.touched)">Enter age</mat-error>
+                      </mat-form-field>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td>
+                      <mat-form-field appearance="outline" class="single">
+                          <mat-label>Sex</mat-label>
+                          <input #sex="ngModel" [(ngModel)]="pdd.sex"   matInput name="sex"  required type="text">
+                          <!--<mat-error *ngIf="sex.errors && (sex.invalid || sex.touched)">Select sex</mat-error>-->
+                      </mat-form-field>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td colspan="2" align="center">
+                          <button  class="submit" color="primary" (click)="savePDetails()" mat-raised-button>SAVE
+                          </button>
+                      </td>
+                  </tr>
+                  
+                  </table>
+      
+                  <br>
+                  <mat-divider></mat-divider>
+                  <br>
+              </div>
+          </form>  
+         
+
+    </mat-card-content>
+
+</mat-card>

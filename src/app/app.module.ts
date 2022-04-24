@@ -16,7 +16,7 @@ import { ReceivingStationComponent } from './MyComponents/receiving-station/rece
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestsHISComponent } from './MyComponents/requests-his/requests-his.component';
 import { SampleComponent } from './MyComponents/sample/sample.component';
-;import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 //import {MatDialogModule} from '@angular/material';
@@ -47,6 +47,10 @@ import { VerificationComponent } from './MyComponents/verification/verification.
 import { DispatchComponent } from './MyComponents/dispatch/dispatch.component';
 import { PendingPatientsComponent } from './MyComponents/pending-patients/pending-patients.component';
 import { PendingPatientsDispatchComponent } from './MyComponents/pending-patients-dispatch/pending-patients-dispatch.component';
+import {MatIconModule} from '@angular/material/icon';
+import { DoctorIndexComponent } from './MyComponents/doctor-index/doctor-index.component';
+import { AddPatientsHISComponent } from './MyComponents/add-patients-his/add-patients-his.component';
+//import { MatDialogActions } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +68,8 @@ import { PendingPatientsDispatchComponent } from './MyComponents/pending-patient
     DispatchComponent,
     PendingPatientsComponent,
     PendingPatientsDispatchComponent,
+    DoctorIndexComponent,
+    AddPatientsHISComponent,
     //AdminComponent
 
   ],
@@ -94,7 +100,9 @@ import { PendingPatientsDispatchComponent } from './MyComponents/pending-patient
     MatSnackBarModule,
     MatSortModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatIconModule,
+    
 
   ],
   providers: [],

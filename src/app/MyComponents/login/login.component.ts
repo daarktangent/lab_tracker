@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     password:'',
     role :''
   }
-
+  hide=true;
   //form=new loginRequest();
   constructor(private router: Router,
     private loginService: LoginService) {
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   onSubmit(){
     
     
@@ -47,8 +48,19 @@ export class LoginComponent implements OnInit {
       resp.subscribe((data)=>{
         this.message=data
         console.log(this.message)
-        if(this.message!=null)
-          this.router.navigateByUrl('/receivingStation')
+        if(this.message!=null){
+          if(this.form.role == "Admin")
+            this.router.navigateByUrl('/admin')
+          else if(this.form.role == "Receptionist")
+            this.router.navigateByUrl('/receivingStation')
+          else if(this.form.role == "Technician")
+            this.router.navigateByUrl('/grossingStation')
+          else if(this.form.role == "Doctor")
+            this.router.navigateByUrl('/doctorIndex')
+          else if(this.form.role == "HIS")
+            this.router.navigateByUrl('/addPatientHIS')
+        }
+        
         else
           alert("Login Failed")
       });

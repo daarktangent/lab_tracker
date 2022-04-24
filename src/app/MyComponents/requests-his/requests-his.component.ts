@@ -19,7 +19,7 @@ import { ReceivingService } from 'src/app/services/receiving.service';
   })
   export class RequestsHISComponent implements OnInit {
 
-  pD_list;
+  pD_list:patientDetails[]=[];
 
   constructor(private _liveAnnouncer: LiveAnnouncer,
     private router :Router,
@@ -28,16 +28,23 @@ import { ReceivingService } from 'src/app/services/receiving.service';
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit(): void {
-    
-       }
+    this.getAllRequests();
+  }
 
   getAllRequests(){
-    this.receivingService.getAllRequests().subscribe(res=>{
-      this.pD_list = res;
+   // let res1=this.receivingService.getAllRequests().subscribe(res=>{}
+     // console.log(this.pD_list);}
+  // },err=>{
+  //   console.log("error while fetching data.")
+  // }
+  //);
+  let res1=this.receivingService.getAllRequests().subscribe(res=>{
+    this.pD_list = res;
   },err=>{
     console.log("error while fetching data.")
   });
-
+  console.log(res1);
+  //this.pD_list=res1;
   }
   addRequest(patient:patientDetails){
     console.log(patient);
@@ -54,6 +61,13 @@ import { ReceivingService } from 'src/app/services/receiving.service';
 
   }
   deleteRequest(patient){
+    this.receivingService.deleteRequest(patient.patient_id).subscribe(
+      res=>{
+      console.log(res);
+      this.getAllRequests();
+  },err=>{
+      console.log(err);
+  });
 
   }
   recStation(){

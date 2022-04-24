@@ -1,0 +1,27 @@
+<mat-card class="example-card">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Doctor Index</a>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="logout()">LOGOUT</button>
+        </div>
+    </nav>
+    <!-- <mat-card-header >
+      <mat-card-title>Doctor Index</mat-card-title>
+        <div mat-dialog-actions align="end">
+            <button  class="submit" color="primary" style="float: right;" (click)="logout()" mat-raised-button>LOGOUT </button><br>
+          </div>
+    </mat-card-header> -->
+    <br><br>
+    <mat-card-content>
+       
+        <div class="example-button-row">
+            <button  class="submit" color="primary" style="margin-bottom: 3%;" (click)="receivingStation()" mat-raised-button>Receiving Station </button><br>
+            <button  class="submit" color="primary" style="margin-bottom: 3%;" (click)="grossingStation()" mat-raised-button>Grossing Station </button><br>
+            <button  class="submit" color="primary" style="margin-bottom: 3%;" (click)="verificationStation()" mat-raised-button>Verification Station </button><br>
+            <button  class="submit" color="primary" style="margin-bottom: 3%;" (click)="dispatchStation()" mat-raised-button>Dispatch Station </button>            
+        </div>
+    </mat-card-content>
+</mat-card>

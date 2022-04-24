@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DispatchService } from 'src/app/services/dispatch.service';
+import { sampleDetails } from '../details/sampleDetails';
 
 @Component({
   selector: 'app-pending-patients-dispatch',
@@ -9,13 +10,14 @@ import { DispatchService } from 'src/app/services/dispatch.service';
 })
 export class PendingPatientsDispatchComponent implements OnInit {
 
-  pndng_patients;
+  pndng_samples:sampleDetails[]=[];
   constructor(
     private router:Router,
     private dispatchService: DispatchService,
   ) { 
-    this.dispatchService.getPendingPatients(4).subscribe(res=>{
-      this.pndng_patients = res;
+    this.dispatchService.getPendingSamples(4).subscribe(res=>{
+      this.pndng_samples = res;
+      console.log(this.pndng_samples);
   },err=>{
     console.log("error while fetching data.")
   });

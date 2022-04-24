@@ -4,10 +4,12 @@
         <a class="navbar-brand" href="#">Dispatch Station</a>
     </div>
     <div>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="pendingPatients()">Pending Patients</button>
+        <button type="submit"  class="btn btn-primary" style="margin-right: 3%;" (click)="pendingPatients()">Pending Patients</button>
     </div>
-</nav>
-  
+    <div>
+      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="logout()">LOGOUT</button>
+  </div>
+  </nav>
   <mat-divider></mat-divider>
   <br>
   <mat-card-content width="500%">
@@ -16,8 +18,8 @@
         <tr>
           <td>
               <mat-form-field appearance="outline"class="single">
-                  <mat-label>Patient ID</mat-label>
-                  <input  #patientid="ngModel" [(ngModel)]="patientId" matInput name="Patient ID" placeholder="Enter Patient Id" type="text" >
+                  <mat-label>Sample ID</mat-label>
+                  <input  #sampleid="ngModel" [(ngModel)]="sampleID" matInput name="Sample ID" placeholder="Enter Sample Id" type="text" >
               </mat-form-field>
           </td>
         </tr>
@@ -41,8 +43,8 @@
           <tr>
             <td colspan="2">
               <mat-form-field appearance="outline"class="single">
-                <mat-label>Patient ID</mat-label>
-                <input   #name="ngModel" [(ngModel)]="pdd.patient_id" [disabled]="isPddReadOnly"  matInput name="PatientID" placeholder="Enter id" required type="text">
+                <mat-label>Sample ID</mat-label>
+                <input   #name="ngModel" [(ngModel)]="sD.sample_id" [disabled]="isPddReadOnly"  matInput name="sampleID" placeholder="Enter id" required type="text">
             
               </mat-form-field>
             </td>
@@ -58,14 +60,14 @@
           <tr>
             <td>
               <mat-form-field appearance="outline" class="single">
-                <mat-label>Age</mat-label>
-                <input matInput name="age" [(ngModel)]="pdd.age" [disabled]="isPddReadOnly" matInput name="Age"  required type="number">
+                <mat-label>Specimen</mat-label>
+                <input matInput name="Specimen" [(ngModel)]="sD.specimen" [disabled]="isPddReadOnly" matInput name="Specimen"  required type="text">
               </mat-form-field>
             </td>
             <td>
               <mat-form-field appearance="outline" class="single">
-                <mat-label>Sex</mat-label>
-                <input  #sex="ngModel" [(ngModel)]="pdd.sex" [disabled]="isPddReadOnly"  matInput name="sex"  required type="text">
+                <mat-label>Fixative</mat-label>
+                <input  #fixative="ngModel" [(ngModel)]="sD.fixative" [disabled]="isPddReadOnly"  matInput name="fixative"  required type="text">
               </mat-form-field>
             </td>
           </tr>
@@ -73,7 +75,7 @@
             <td colspan="2">
               <mat-form-field appearance="outline" class="single">
                 <mat-label>Report</mat-label>
-                <input  #bReport="ngModel" [(ngModel)]="pdd.report" [disabled]="isPddReadOnly"  matInput name="Report" placeholder="Report" required type="text">
+                <input  #bReport="ngModel" [(ngModel)]="sD.remarks" [disabled]="isPddReadOnly"  matInput name="Report" placeholder="Report" required type="text">
               </mat-form-field>
             </td>
         </tr>
@@ -88,7 +90,7 @@
             <td>
               <mat-form-field appearance="outline" class="single">
                 <mat-label>Observations</mat-label>
-                <input #npNumber="ngModel" [(ngModel)]="pdd.report" matInput name="obsrvtns"  required type="text" matInput name="observtns"  required type="text">
+                <input #npNumber="ngModel" [(ngModel)]="sD.remarks" matInput name="obsrvtns"  required type="text" matInput name="observtns"  required type="text">
               </mat-form-field>
             </td> 
              

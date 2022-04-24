@@ -13,10 +13,13 @@
                     type="submit">Add Employee</button>
             </div>
         </div>
+        
         <div>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="getAllEmployee()">Show
-                All</button>
+            <button type="submit"  class="btn btn-primary" style="margin-right: 3%;" (click)="getAllEmployee()">Show All</button>
         </div>
+        <div>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="logout()">LOGOUT</button>
+      </div>
     </nav>
     <div class="form-group">
         <input type="text" class="form-control search-field" placeholder="Search Here"
@@ -87,6 +90,18 @@
                         <input type="text" formControlName="role" class="form-control" id="role"
                             aria-describeddescribedby="emailHelp">
                     </div>
+                    
+                        <!-- <mat-form-field appearance="fill">
+                            <mat-label for="exampleInputEmail1" class="form-label">Role</mat-label>
+                            <mat-select formControlName="role" class="form-control" id="role" aria-describedby="emailHelp">
+                              <mat-option value="Admin">Admin</mat-option>
+                              <mat-option value="Receptionist">Receptionist</mat-option>
+                              <mat-option value="Technician">Technician</mat-option>
+                              <mat-option value="Doctor">Doctor</mat-option>
+                              <mat-option value="HIS">HIS</mat-option>
+                            </mat-select>
+                          </mat-form-field> -->
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"

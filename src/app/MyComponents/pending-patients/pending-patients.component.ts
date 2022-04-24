@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VerificationService } from 'src/app/services/verification.service';
+import { sampleDetails } from '../details/sampleDetails';
 
 @Component({
   selector: 'app-pending-patients',
@@ -9,13 +10,13 @@ import { VerificationService } from 'src/app/services/verification.service';
 })
 export class PendingPatientsComponent implements OnInit {
 
-  pndng_patients;
+  pndng_samples;
   constructor(
     private router:Router,
     private verificationService: VerificationService,
   ) { 
-    this.verificationService.getPendingPatients(3).subscribe(res=>{
-      this.pndng_patients = res;
+    this.verificationService.getPendingSamples(3).subscribe(res=>{
+      this.pndng_samples = res;
   },err=>{
     console.log("error while fetching data.")
   });

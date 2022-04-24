@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,FormControl} from '@angular/forms';
 import { Employee } from '../details/Employee';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +15,8 @@ export class AdminComponent implements OnInit {
   empObj : Employee = new Employee();
   empList : Employee[] = []
   searchText : string;
-  constructor(private formBuilder: FormBuilder,private empService: EmployeeService) { }
+  constructor(private formBuilder: FormBuilder,private empService: EmployeeService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.empDetail = this.formBuilder.group({
@@ -25,6 +27,7 @@ export class AdminComponent implements OnInit {
       phone: [''],
       role:['']
     })
+    this.getAllEmployee();
   }
   addEmployee(){
     console.log(this.empDetail);
@@ -84,6 +87,9 @@ deleteEmployee(emp : Employee) {
     console.log(err);
   });
 
+}
+logout(){
+  this.router.navigateByUrl('/login')
 }
 
 

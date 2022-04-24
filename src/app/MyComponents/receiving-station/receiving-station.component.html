@@ -1,23 +1,35 @@
 <mat-card class="example-card">
-  <mat-card-header>
+  <!-- <mat-card-header>
     <mat-card-title>Receiving Station</mat-card-title>
     
-  </mat-card-header>
-  <div  id="navbarSupportedContent">
+  </mat-card-header> -->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Receiving Station</a>
+    </div>
+    <div>
+        <button type="submit"  class="btn btn-primary" style="margin-right: 3%;" (click)="requests()">Requests from HIS</button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="logout()">LOGOUT</button>
+  </div>
+</nav>
+  <!-- <div  id="navbarSupportedContent">
     <form class="d-flex">
       <button class="btn btn-outline-success" style="margin-right:20px" type="submit" (click)="requests()">Requests from HIS</button>
     </form>
     <div class="text-right">
       <button class="btn btn-outline-success" slyle="margin-right:30px" type="submit" (click)="manualEntry()">External Sample</button>
     </div>
-  </div>
+  </div> -->
 
   <mat-divider></mat-divider>
   <br>
   <mat-card-content width="500%">
 
-  <mat-tab-group backgroundColor="primary" >
-    <mat-tab label="First"> 
+  <mat-tab-group >
+    <mat-tab label="From HIS"> 
       <form #Form="ngForm"  class="form">
         <!--<div *ngIf="registrationType.value=== 'INTERNAL'||registrationType.value==='EXTERNAL'">hello</div>-->
         <br>
@@ -109,13 +121,13 @@
                 </mat-form-field>
               </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td colspan="2" align="center">
                   <button  class="submit" color="primary" (click)="savePDetails()" mat-raised-button>SAVE
                   </button>
                 </td>
               </tr>
-            
+             -->
           </table>
   
           <br>
@@ -130,41 +142,41 @@
               <td>
                 <mat-form-field appearance="outline" class="single">
                   <mat-label>Sample ID</mat-label>
-                  <input #npNumber="ngModel" [(ngModel)]="sd.sample_id" matInput name="sample_id" [disabled]="true" required type="text">
+                  <input #npNumber="ngModel" [(ngModel)]="sd.sample_id" matInput name="sample_id" disabled=true required type="text">
                 </mat-form-field>
               </td> 
               <td>
                 <mat-form-field appearance="outline" class="single">
                   <mat-label>Remarks</mat-label>
-                  <input #npNumber="ngModel" [(ngModel)]="sd.remarks" matInput name="remarks"  required type="text">
+                  <input #npNumber="ngModel" [(ngModel)]="sd.remarks" matInput name="remarks1 "  required type="text">
                 </mat-form-field>
               </td> 
               <td>
                 <mat-form-field appearance="outline" class="single">
                   <mat-label>Specimen</mat-label>
-                  <input #npNumber="ngModel" [(ngModel)]="sd.specimen" matInput name="specimen"  required type="text">
+                  <input #npNumber="ngModel" [(ngModel)]="sd.specimen" matInput name="specimen1"  required type="text">
                 </mat-form-field>
               </td> 
               <td>
                 <mat-form-field appearance="outline" class="single">
                   <mat-label>Test</mat-label>
-                  <input #npNumber="ngModel" [(ngModel)]="sd.test" matInput name="test"  required type="text">
+                  <input #npNumber="ngModel" [(ngModel)]="sd.test" matInput name="test1"  required type="text">
                 </mat-form-field>
               </td> 
               <td>
                 <mat-form-field appearance="outline" class="single">
                   <mat-label>Fixative</mat-label>
-                  <input #npNumber="ngModel" [(ngModel)]="sd.fixative" matInput name="fixative"  required type="text">
+                  <input #npNumber="ngModel" [(ngModel)]="sd.fixative" matInput name="fixative1"  required type="text">
                 </mat-form-field>
               </td> 
               <td>
                 <mat-form-field appearance="outline" class="single">
                   <mat-label>Quantity</mat-label>
-                  <input #npNumber="ngModel" [(ngModel)]="sd.quantity" matInput name="quantity"  required type="text">
+                  <input #npNumber="ngModel" [(ngModel)]="sd.quantity" matInput name="quantity1"  required type="text">
                 </mat-form-field>
               </td> 
               <td align="center">
-                <button  class="submit" type="submit" (click)="saveSampleDetails()" color="primary" mat-raised-button>SAVE</button>
+                <button  class="submit" type="submit" (click)="generate()" color="primary" mat-raised-button>GENERATE</button>
               </td>
             </tr>
           </table>
@@ -172,8 +184,66 @@
   
           <div #hiddenForm  [hidden]="(sampleForm)">
             <div><h3>SAMPLES</h3></div>
-            
-            <table class="table table-striped table-bordered">
+            <table>
+              <thead>
+                  <tr>
+                      <th>Sample ID</th>
+                      <th>Sample remarks</th>
+                      <th>Specimen</th>
+                      <th>Test</th>
+                      <th>fixative</th>
+                      <th>Quantity</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let sample of sA">
+                  <td>
+                    <mat-form-field appearance="outline" class="single">
+                      <mat-label>Sample ID</mat-label>
+                      <input #npNumber="ngModel" [(ngModel)]="sample.sample_id" matInput name="{{sample.sample_id}}" disabled=true required type="text">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field appearance="outline" class="single">
+                      <mat-label>Remarks</mat-label>
+                      <input #npNumber="ngModel" [(ngModel)]="sample.remarks" matInput name="remarks"  required type="text">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field appearance="outline" class="single">
+                      <mat-label>Specimen</mat-label>
+                      <input #npNumber="ngModel" [(ngModel)]="sample.specimen" matInput name="specimen"   required type="text">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field appearance="outline" class="single">
+                      <mat-label>Test</mat-label>
+                      <input #npNumber="ngModel" [(ngModel)]="sample.test" matInput name="test" required type="text">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field appearance="outline" class="single">
+                      <mat-label>Fixative</mat-label>
+                      <input #npNumber="ngModel" [(ngModel)]="sample.fixative" matInput name="fixative" disabled=true required type="text">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field appearance="outline" class="single">
+                      <mat-label>Quantity</mat-label>
+                      <input #npNumber="ngModel" [(ngModel)]="sample.quantity" matInput name="quantity" disabled=true required type="text">
+                    </mat-form-field>
+                  </td>
+                 
+                  
+                  
+                  </tr>
+                  <td align="center">
+                    <button  class="submit" type="submit" (click)="saveSampleDetails()" color="primary" mat-raised-button>SAVE</button>
+                  </td>
+              </tbody>
+          </table>
+              
+            <!-- <table class="table table-striped table-bordered" >
               <thead>
                   <tr>
                       <th>Sample ID</th>
@@ -189,49 +259,49 @@
                       <td>
                         <mat-form-field appearance="outline" class="single">
                           <mat-label>Sample ID</mat-label>
-                          <input #npNumber="ngModel" [(ngModel)]="sample.sample_id" matInput name="{{sample.sample_id}}"  required type="text">
+                          <input #npNumber="ngModel" [(ngModel)]="sample.sample_id" matInput name=${sample.sample_id}   disabled=true required type="text">
                         </mat-form-field>
                       </td>
                       <td>
                         <mat-form-field appearance="outline" class="single">
                           <mat-label>Remarks</mat-label>
-                          <input #npNumber="ngModel" [(ngModel)]="sample.remarks" matInput name="{{sample.remarks}}"  required type="text">
+                          <input #npNumber="ngModel" [(ngModel)]="sample.remarks" matInput name="remarks"  disabled=true required type="text">
                         </mat-form-field>
                       </td>
                       <td>
                         <mat-form-field appearance="outline" class="single">
                           <mat-label>Specimen</mat-label>
-                          <input #npNumber="ngModel" [(ngModel)]="sample.specimen" matInput name="{{sample.specimen}}"  required type="text">
+                          <input #npNumber="ngModel" [(ngModel)]="sample.specimen" matInput name="specimen"  disabled=true required type="text">
                         </mat-form-field>
                       </td>
                       <td>
                         <mat-form-field appearance="outline" class="single">
                           <mat-label>Test</mat-label>
-                          <input #npNumber="ngModel" [(ngModel)]="sample.test" matInput name="{{sample.test}}"  required type="text">
+                          <input #npNumber="ngModel" [(ngModel)]="sample.test" matInput name="test" disabled=true required type="text">
                         </mat-form-field>
                       </td>
                       <td>
                         <mat-form-field appearance="outline" class="single">
                           <mat-label>Fixative</mat-label>
-                          <input #npNumber="ngModel" [(ngModel)]="sample.fixative" matInput name="{{sample.fixative}}"  required type="text">
+                          <input #npNumber="ngModel" [(ngModel)]="sample.fixative" matInput name="fixative" disabled=true required type="text">
                         </mat-form-field>
                       </td>
                       <td>
                         <mat-form-field appearance="outline" class="single">
                           <mat-label>Quantity</mat-label>
-                          <input #npNumber="ngModel" [(ngModel)]="sample.quantity" matInput name="{{sample.quantity}}"  required type="text">
+                          <input #npNumber="ngModel" [(ngModel)]="sample.quantity" matInput name="quantity" disabled=true required type="text">
                         </mat-form-field>
                       </td>
                      
                       
                   </tr>
               </tbody>
-          </table>
+          </table> -->
           
           </div>
       </form>  
     </mat-tab>
-    <mat-tab label="Second"> 
+    <mat-tab label="External"> 
       <form #Form="ngForm"  class="form">
 
         <div #hiddenForm class="viewForm">
@@ -262,11 +332,20 @@
                     <mat-error *ngIf="age.errors && (age.invalid || age.touched)">Enter age</mat-error>
                 </mat-form-field>
                 </td>
+              
                 <td>
                 <mat-form-field appearance="outline" class="single">
                     <mat-label>Sex</mat-label>
                     <input #sex="ngModel" [(ngModel)]="pdd2.sex"   matInput name="sex"  required type="text">
                     <!--<mat-error *ngIf="sex.errors && (sex.invalid || sex.touched)">Select sex</mat-error>-->
+                </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field appearance="outline" class="single">
+                    <mat-label>Email</mat-label>
+                    <input #email="ngModel" [(ngModel)]="pdd2.email"  matInput name="email"  placeholder="Enter email" required type="text">
                 </mat-form-field>
                 </td>
             </tr>

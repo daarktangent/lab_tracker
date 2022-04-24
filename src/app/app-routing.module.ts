@@ -13,6 +13,8 @@ import { VerificationComponent } from './MyComponents/verification/verification.
 import { DispatchComponent } from './MyComponents/dispatch/dispatch.component';
 import { PendingPatientsComponent } from './MyComponents/pending-patients/pending-patients.component';
 import { PendingPatientsDispatchComponent } from './MyComponents/pending-patients-dispatch/pending-patients-dispatch.component';
+import { DoctorIndexComponent } from './MyComponents/doctor-index/doctor-index.component';
+import { AddPatientsHISComponent } from './MyComponents/add-patients-his/add-patients-his.component';
 const routes: Routes = [
   //{path:'',component:LoginComponent},
   {path:'receivingStation',component:ReceivingStationComponent},
@@ -27,7 +29,9 @@ const routes: Routes = [
   {path:'verification',component:VerificationComponent},
   {path:"dispatch",component:DispatchComponent},
   {path:"pendingPatients",component:PendingPatientsComponent},
-  {path:"pendingDispatchPatients",component:PendingPatientsDispatchComponent}
+  {path:"pendingDispatchPatients",component:PendingPatientsDispatchComponent},
+  {path:"doctorIndex",component:DoctorIndexComponent},
+  {path:"addPatientHIS",component:AddPatientsHISComponent}
 ];
 
 @NgModule({

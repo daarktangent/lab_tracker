@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import { sample } from 'rxjs';
+import { Observable, sample } from 'rxjs';
+import { sampleDetails } from '../MyComponents/details/sampleDetails';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,8 +13,8 @@ export class GrossingService {
   };
   constructor(private httpClient: HttpClient) { }
 
-  getPendingSamples(){
-    return this.httpClient.get(this.serverUrl+'getPendingSamples');
+  getPendingSamples(station):Observable<sampleDetails[]>{
+    return this.httpClient.get<sampleDetails[]>(this.serverUrl+'getPendingSamples/'+station);
   }
   getPatient_sampleID(sample_id){
     return this.httpClient.get(this.serverUrl+'getPatient_sampleID/'+sample_id);

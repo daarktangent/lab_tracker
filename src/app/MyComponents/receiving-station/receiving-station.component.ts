@@ -1,13 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { patientDetails } from '../details/patientDetails';
 
-import { MatDialog } from '@angular/material/dialog';
+
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import { ReceivingService } from 'src/app/services/receiving.service';
 import { sampleDetails } from '../details/sampleDetails';
+import {MatDialog, MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogActions } from '@angular/material/dialog';
+
+export interface DialogData {
+  title:string;
+  content:string;
+}
 
 @Component({
   selector: 'app-receiving-station',
@@ -18,8 +25,8 @@ export class ReceivingStationComponent implements OnInit {
   regType='INTERNAL';
   uSampleId;
   uUHID;
-  pdd;
-  pdd2;
+  pdd:patientDetails=new patientDetails();
+  pdd2:patientDetails=new patientDetails();
   name;
   newForm=true;
   sampleForm=true;
@@ -31,13 +38,14 @@ export class ReceivingStationComponent implements OnInit {
   sA: Array<sampleDetails> = [];
   sd: sampleDetails=new sampleDetails();
   
-  patientVals;
+  patientVals:patientDetails[]=[];
   patientFC = new FormControl();
 
   constructor(private router: Router,
-    private receivingService: ReceivingService) {
-        this.pdd=new patientDetails("","",0,"","",false);
-        this.pdd2=new patientDetails("","",0,"","",false);
+    private receivingService: ReceivingService,
+    public dialog: MatDialog) {
+       // this.pdd=new patientDetails("","","",0,"","",false);
+        //this.pdd2=new patientDetails("","","",0,"","",false);
         this.receivingService.getAcceptedRequests().subscribe(data=>{
           this.patientVals=data;
           console.log(data);
@@ -62,6 +70,7 @@ export class ReceivingStationComponent implements OnInit {
 
     this.receivingService.getPDDDetailByUHID(this.uSampleId).subscribe(
       (data) => {
+        this.sd=new sampleDetails();
         this.pdd = data;
         this.sd.sample_id=this.pdd.patient_id;
       },
@@ -81,10 +90,13 @@ export class ReceivingStationComponent implements OnInit {
       console.log(data);
       this.message=data});
     console.log(this.message);
-  }
+    if(resp)
+      this.openDialog(true);
+    else
+      this.openDialog(false);
 
-  saveSampleDetails(){
-    
+  }
+  generate(){
     this.sd.pd=this.pdd;
 
     for(let i=0;i<this.sd.quantity;i++){
@@ -104,6 +116,12 @@ export class ReceivingStationComponent implements OnInit {
     }
     
     console.log(this.sA);
+    this.sampleForm=false;
+  }
+
+  saveSampleDetails(){
+    
+    
     // if(this.receivingService.getSampleExist(this.sA[0].sample_id)){
 
     // }
@@ -113,7 +131,7 @@ export class ReceivingStationComponent implements OnInit {
         console.log(data);
         this.message=data});
       console.log(this.message);
-      this.sampleForm=false;
+     
     //}
 
 
@@ -147,8 +165,54 @@ export class ReceivingStationComponent implements OnInit {
   manualEntry(){
     this.router.navigateByUrl('/external')
   }
+  openDialog(response) {
+   
+    if(response)
+    {
+      this.dialog.open(DialogElementsExampleDialog);
+    }
+    else{
+      const dialogRef = this.dialog.open(DialogUnsuccess, {
+        width: '300px',
+        data: {}
+      });
+    }
+    
+  }
+
+  logout(){
+    this.router.navigateByUrl('/login')
+  }
 }
 // function getSampleExist(sample_id: string) {
 //   throw new Error('Function not implemented.');
 // }
 
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: 'dialog-elements-example-dialog.html',
+})
+export class DialogElementsExampleDialog { 
+  constructor(
+    public dialogRef: MatDialogRef<DialogElementsExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ){}
+  close(){
+    this.dialogRef.close();
+  }
+  
+}
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: 'dialog-unsuccess.html',
+})
+export class DialogUnsuccess { 
+  constructor(
+    public dialogRef: MatDialogRef<DialogUnsuccess>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ){}
+  close(){
+    this.dialogRef.close();
+  }
+}
