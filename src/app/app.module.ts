@@ -50,6 +50,8 @@ import { PendingPatientsDispatchComponent } from './MyComponents/pending-patient
 import {MatIconModule} from '@angular/material/icon';
 import { DoctorIndexComponent } from './MyComponents/doctor-index/doctor-index.component';
 import { AddPatientsHISComponent } from './MyComponents/add-patients-his/add-patients-his.component';
+import { SearchComponent } from './MyComponents/search/search.component';
+
 //import { MatDialogActions } from '@angular/material/dialog';
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { AddPatientsHISComponent } from './MyComponents/add-patients-his/add-pat
     PendingPatientsDispatchComponent,
     DoctorIndexComponent,
     AddPatientsHISComponent,
+    SearchComponent,
     //AdminComponent
 
   ],

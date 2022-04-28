@@ -15,8 +15,9 @@ import { PendingPatientsComponent } from './MyComponents/pending-patients/pendin
 import { PendingPatientsDispatchComponent } from './MyComponents/pending-patients-dispatch/pending-patients-dispatch.component';
 import { DoctorIndexComponent } from './MyComponents/doctor-index/doctor-index.component';
 import { AddPatientsHISComponent } from './MyComponents/add-patients-his/add-patients-his.component';
+import { SearchComponent } from './MyComponents/search/search.component';
 const routes: Routes = [
-  //{path:'',component:LoginComponent},
+  {path:'',component:LoginComponent},
   {path:'receivingStation',component:ReceivingStationComponent},
   {path:'requests',component:RequestsHISComponent},
   {path:'sample',component:SampleComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path:"pendingPatients",component:PendingPatientsComponent},
   {path:"pendingDispatchPatients",component:PendingPatientsDispatchComponent},
   {path:"doctorIndex",component:DoctorIndexComponent},
-  {path:"addPatientHIS",component:AddPatientsHISComponent}
+  {path:"addPatientHIS",component:AddPatientsHISComponent},
+  {path:"search",component:SearchComponent}
 ];
 
 @NgModule({
